@@ -452,7 +452,7 @@ export default function Dashboard() {
                   {myFines.map((fine) => (
                     <div
                       key={fine._id}
-                      className={`p-5 rounded-2xl border flex items-center justify-between transition-all ${
+                      className={`p-5 rounded-2xl border flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all ${
                         fine.status === 'paid'
                           ? 'bg-emerald-950/20 border-emerald-500/20 text-emerald-400'
                           : 'bg-amber-950/20 border-amber-500/20 text-amber-400 animate-pulse'
@@ -504,7 +504,7 @@ export default function Dashboard() {
                   <ul role="list" className="divide-y divide-border">
                     {myHistory.map((record) => (
                       <li key={record._id} className="hover:bg-border/10 transition-colors">
-                        <div className="px-6 py-6 flex items-center justify-between">
+                        <div className="px-6 py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                           <div className="flex items-center space-x-4">
                             <div className="h-14 w-10 bg-gray-800 rounded-lg flex-shrink-0 overflow-hidden flex items-center justify-center">
                               {record.book?.coverImage && record.book?.coverImage !== '/images/sample.jpg' ? (
