@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+  
+  /* Librify-inspired Color Palette */
+  --color-primary: #00a76f;
+  --color-primary-dark: #00875a;
+  --color-secondary: #1a56db;
+  --color-background: #fafafa;
+  --color-surface: #ffffff;
+  --color-text: #404040;
+  --color-border: #e5e7eb;
+
+  /* Dark mode variants */
+  --color-dark-background: #0f172a;
+  --color-dark-surface: #1e293b;
+  --color-dark-text: #f1f5f9;
+  --color-dark-border: #334155;
+  --color-dark-muted: #94a3b8;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-text antialiased transition-colors duration-300;
+    font-family: var(--font-sans);
+  }
+}
+
+.dark body {
+  @apply bg-dark-background text-dark-text;
+}
+
+.dark .bg-surface {
+  @apply bg-dark-surface;
+}
+
+.dark .bg-background {
+  @apply bg-dark-background;
+}
+
+.dark .border-border {
+  @apply border-dark-border;
+}
+
+.dark .text-text {
+  @apply text-dark-text;
+}
+
+.dark .text-gray-500, .dark .text-gray-400 {
+  @apply text-dark-muted;
+}
+
+.dark .bg-gray-50, .dark .bg-gray-50\/50, .dark .bg-gray-100 {
+  @apply bg-dark-background/50;
+}
+
+/* Custom Utilities for Librify Look */
+@layer components {
+  .card {
+    @apply bg-surface border border-border rounded-xl shadow-sm hover:shadow-md transition-all duration-200;
+  }
+  
+  .dark .card {
+    @apply bg-dark-surface border-dark-border;
+  }
+
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-dark text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 shadow-lg shadow-primary/20 hover:shadow-primary/30 active:scale-95;
+  }
+  
+  .input-field {
+    @apply w-full rounded-lg border-border bg-surface text-text focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 py-2.5 px-4;
+  }
+
+  .dark .input-field {
+    @apply bg-dark-surface border-dark-border text-dark-text;
+  }
+  
+  .section-title {
+    @apply text-2xl font-bold text-text tracking-tight mb-6;
+  }
+
+  .dark .section-title {
+    @apply text-dark-text;
+  }
+}
+
+

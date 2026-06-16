@@ -1,0 +1,15 @@
+{
+  "name": "librify-root",
+  "version": "1.0.0",
+  "description": "Root for Librify Library Management System",
+  "main": "index.js",
+  "scripts": {
+    "backend": "npm run dev --prefix backend",
+    "frontend": "npm run dev --prefix frontend",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "install-all": "npm install && npm install --prefix backend && npm install --prefix frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.1"
+  }
+}
