@@ -9,8 +9,10 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+
   const api = axios.create({
-    baseURL: 'http://localhost:5000/api',
+    baseURL: `${backendUrl}/api`,
     withCredentials: true,
   });
 
@@ -37,7 +39,7 @@ export const AuthProvider = ({ children }) => {
         originalRequest._retry = true;
         try {
           const { data } = await axios.post(
-            'http://localhost:5000/api/auth/refresh',
+            `${backendUrl}/api/auth/refresh`,
             {},
             { withCredentials: true }
           );

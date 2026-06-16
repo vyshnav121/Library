@@ -5,6 +5,7 @@ import { Plus, Edit, Trash2, X, Loader2, BookOpen } from 'lucide-react';
 
 export default function ManageBooks() {
   const { api, user } = useAuth();
+  const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
   const [books, setBooks] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -79,7 +80,7 @@ export default function ManageBooks() {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       };
-      const { data } = await axios.post('http://localhost:5000/api/upload', formData, config);
+      const { data } = await axios.post(`${backendUrl}/api/upload`, formData, config);
       setNewBook({ ...newBook, coverImage: data });
     } catch (error) {
       console.error('Error uploading image', error);
@@ -176,7 +177,7 @@ export default function ManageBooks() {
                         <div className="h-14 w-10 flex-shrink-0 bg-gray-100 rounded overflow-hidden mr-4 flex items-center justify-center border border-border">
                           {book.coverImage ? (
                             <img 
-                              src={book.coverImage.startsWith('http') ? book.coverImage : `http://localhost:5000${book.coverImage}`} 
+                              src={book.coverImage.startsWith('http') ? book.coverImage : `${backendUrl}${book.coverImage}`} 
                               alt="" 
                               className="h-full w-full object-cover" 
                             />

@@ -29,6 +29,7 @@ export default function Dashboard() {
   const { user, logout, api } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
+  const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
 
   const [activeTab, setActiveTab] = useState('catalog');
   const [books, setBooks] = useState([]);
@@ -303,7 +304,7 @@ export default function Dashboard() {
                       <div className="h-40 bg-gray-900/50 flex items-center justify-center relative overflow-hidden">
                         {book.coverImage && book.coverImage !== '/images/sample.jpg' ? (
                           <img
-                            src={book.coverImage.startsWith('http') ? book.coverImage : `http://localhost:5000${book.coverImage}`}
+                            src={book.coverImage.startsWith('http') ? book.coverImage : `${backendUrl}${book.coverImage}`}
                             alt={book.title}
                             className="w-full h-full object-cover"
                           />
@@ -357,7 +358,7 @@ export default function Dashboard() {
                     <div className="h-56 bg-gray-950/20 flex items-center justify-center relative overflow-hidden">
                       {book.coverImage && book.coverImage !== '/images/sample.jpg' ? (
                         <img
-                          src={book.coverImage.startsWith('http') ? book.coverImage : `http://localhost:5000${book.coverImage}`}
+                          src={book.coverImage.startsWith('http') ? book.coverImage : `${backendUrl}${book.coverImage}`}
                           alt={book.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
@@ -508,7 +509,7 @@ export default function Dashboard() {
                             <div className="h-14 w-10 bg-gray-800 rounded-lg flex-shrink-0 overflow-hidden flex items-center justify-center">
                               {record.book?.coverImage && record.book?.coverImage !== '/images/sample.jpg' ? (
                                 <img
-                                  src={record.book.coverImage.startsWith('http') ? record.book.coverImage : `http://localhost:5000${record.book.coverImage}`}
+                                  src={record.book.coverImage.startsWith('http') ? record.book.coverImage : `${backendUrl}${record.book.coverImage}`}
                                   className="w-full h-full object-cover"
                                 />
                               ) : (

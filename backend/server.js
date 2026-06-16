@@ -24,8 +24,9 @@ connectDB();
 
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://library-sigma-blond-94.vercel.app'
-];
+  'https://library-sigma-blond-94.vercel.app',
+  process.env.FRONTEND_URL
+].filter(Boolean);
 
 const corsOptions = {
   origin: function (origin, callback) {
